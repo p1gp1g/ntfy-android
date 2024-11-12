@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/> <!-- To restart service on reboot -->
     <uses-permission android:name="android.permission.VIBRATE"/> <!-- Incoming notifications should be able to vibrate the phone -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/> <!-- Only required on SDK <= 28 -->
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/> <!-- To reschedule the websocket retry -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" android:maxSdkVersion="32"/> <!-- To reschedule the websocket retry -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/> <!-- As of Android 13, we need to ask for permission to post notifications -->
 
     <!--
