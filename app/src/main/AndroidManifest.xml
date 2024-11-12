@@ -5,6 +5,7 @@
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/> <!-- For instant delivery foregrounds service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/> <!-- To keep foreground service awake; soon not needed anymore -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/> <!-- To restart service on reboot -->
     <uses-permission android:name="android.permission.VIBRATE"/> <!-- Incoming notifications should be able to vibrate the phone -->
@@ -104,7 +105,13 @@
         </activity>
 
         <!-- Subscriber foreground service for hosts other than ntfy.sh -->
-        <service android:name=".service.SubscriberService"/>
+        <service android:name=".service.SubscriberService"
+            android:enabled="true"
+            android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="This service needs to be constantly connected to the server with the websocket if the device don't have Play Services, or the self-hosted server doesn't support FCM."/>
+        </service>
+
 
         <!-- Subscriber service restart on reboot -->
         <receiver
